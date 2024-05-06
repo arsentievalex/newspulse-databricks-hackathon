@@ -6,3 +6,4 @@ yahooquery
 streamlit_lightweight_charts
 pandas
 numpy
+matplotlib
