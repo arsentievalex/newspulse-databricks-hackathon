@@ -150,6 +150,7 @@ if st.session_state['logged_in']:
 
     # chatbot tab. For demo purposes will use embedchain and a few sample news articles.
     with tab3:
+        st.info("The chatbot is trained only on selected articles for demo purposes")
 
         urls = ["https://www.msn.com/en-us/autos/news/tesla-s-supercharger-layoffs-couldn-t-have-come-at-a-worse-time/ar-AA1o6uYb",
                 "https://www.msn.com/en-us/money/news/i-landed-a-dream-internship-at-tesla-now-im-scrambling-after-the-company-cancelled-my-internship-3-weeks-before-i-was-set-to-start/ar-AA1o3OFp",
