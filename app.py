@@ -37,7 +37,7 @@ access_token = "YOUR_ACCESS TOKEN"
 
 
 # establish connection to databricks db
-connection = functions.get_conn(server_hostname, http_path, access_token)
+# connection = functions.get_conn(server_hostname, http_path, access_token)
 
 with st.sidebar:
     with st.form(key='login_form'):
