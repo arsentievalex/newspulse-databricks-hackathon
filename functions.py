@@ -3,7 +3,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from streamlit.components.v1 import html
 import time
-from databricks import sql
+#from databricks import sql
 import numpy as np
 from collections import defaultdict
 from streamlit_lightweight_charts import renderLightweightCharts
@@ -282,27 +282,27 @@ def custom_sort_key(topic):
     return (0, '') if topic == 'overall_sentiment' else (1, topic)
 
 
-@st.cache_resource(show_spinner=False)
-def get_conn(server_hostname, http_path, access_token):
-    connection = sql.connect(server_hostname = server_hostname,
-                     http_path       = http_path,
-                     access_token    = access_token,)
-    return connection
+# @st.cache_resource(show_spinner=False)
+# def get_conn(server_hostname, http_path, access_token):
+#     connection = sql.connect(server_hostname = server_hostname,
+#                      http_path       = http_path,
+#                      access_token    = access_token,)
+#     return connection
 
 
-@st.cache_data(show_spinner=False)
-def find_user(connection, username, password):
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM my_test_workspace.hackathon_schema.users WHERE username = '{}' AND password = '{}'".format(username, password))
-    result = cursor.fetchall()
-    cursor.close()
-    return result
+# @st.cache_data(show_spinner=False)
+# def find_user(connection, username, password):
+#     cursor = connection.cursor()
+#     cursor.execute("SELECT * FROM my_test_workspace.hackathon_schema.users WHERE username = '{}' AND password = '{}'".format(username, password))
+#     result = cursor.fetchall()
+#     cursor.close()
+#     return result
 
 
-@st.cache_data(show_spinner=False)
-def get_data(connection, watchlist):
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM my_test_workspace.hackathon_schema.articles WHERE company_name= '{}'".format(watchlist))
-    result = cursor.fetchall()
-    cursor.close()
-    return result
+# @st.cache_data(show_spinner=False)
+# def get_data(connection, watchlist):
+#     cursor = connection.cursor()
+#     cursor.execute("SELECT * FROM my_test_workspace.hackathon_schema.articles WHERE company_name= '{}'".format(watchlist))
+#     result = cursor.fetchall()
+#     cursor.close()
+#     return result
