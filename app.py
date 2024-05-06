@@ -90,7 +90,7 @@ if st.session_state['logged_in']:
 
     # sentiment analysis tab
     with tab1:
-        st.info('Below heatmaps present the sentiment analysis of the most recent news article. The range of sentiment is from -1 to 1, where -1 is negative sentiment, 0 is neutral sentiment, and 1 is positive sentiment.')
+        st.info('Below heatmaps present the sentiment analysis of the most recent news articles. The range of sentiment is from -1 to 1, where -1 is negative sentiment, 0 is neutral sentiment, and 1 is positive sentiment.')
         
         # replace null with None
         articles_df['sentiment'] = articles_df['sentiment'].apply(lambda x: x.replace('null', 'None'))
