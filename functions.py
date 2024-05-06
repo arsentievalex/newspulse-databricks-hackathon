@@ -79,13 +79,13 @@ def get_stock_history(tkr):
     # Keep only columns 'date' and 'adjclose'
     df = df[['date', 'adjclose']]
     
-    # Convert 'date' to datetime
-    df['date'] = pd.to_datetime(df['date'], errors='coerce')
+    # Ensure the 'date' column is datetime-like
+    df['date'] = pd.to_datetime(df['date'], errors='coerce', utc=True)
     
-    # Convert all dates to timezone naive, removing any timezone information
-    df['date'] = df['date'].dt.tz_localize(None)
+    # Convert to time zone naive (optional step based on your preference)
+    df['date'] = df['date'].dt.tz_convert(None)
     
-    # Format 'date' column to "YYYY-MM-DD"
+    # Format the 'date' column to "YYYY-MM-DD"
     df['date'] = df['date'].dt.strftime('%Y-%m-%d')
 
     # Convert to list of dictionaries
