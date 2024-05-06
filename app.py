@@ -166,7 +166,7 @@ if st.session_state['logged_in']:
                 ]
 
         # set openai api key
-        #openai.api_key = "YOUR KEY"
+        os.environ["OPENAI_API_KEY"] = st.secrets["openai_credentials"]["API_KEY"]
 
         bot = functions.load_bot(urls)
         query_config = BaseLlmConfig(number_documents=1)
