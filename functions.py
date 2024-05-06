@@ -38,7 +38,7 @@ def get_sources(citations):
 
 def transform_date_sentiment(df):
     # Filter for only the overall_sentiment row
-    overall_sentiment_df = df[df['Sentiment Topic'] == 'overall_sentiment']
+    overall_sentiment_df = df[df['Sentiment Topic'] == 'Overall sentiment']
 
     # Drop unnecessary columns
     overall_sentiment_df = overall_sentiment_df.drop(columns=['Sentiment Topic'])
