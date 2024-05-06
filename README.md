@@ -15,3 +15,6 @@ The process of acquiring the data is as follows:
 The idea is that the Databricks jobs are scheduled to run every day or even multiple times per day to enrich the database and vector store with the newest articles.
 
 <img src="https://i.postimg.cc/hvqBYt93/newspulse.gif"/>
+
+
+<img src="[https://i.postimg.cc/hvqBYt93/newspulse.gif](https://i.postimg.cc/T1HZ62m6/newspulse-architecture.png)"/>
