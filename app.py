@@ -3,7 +3,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from streamlit.components.v1 import html
 import time
-from databricks import sql
+# from databricks import sql
 import numpy as np
 from collections import defaultdict
 from streamlit_lightweight_charts import renderLightweightCharts
