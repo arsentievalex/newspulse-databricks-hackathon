@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body, html {
+            font-family: Outfit, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+            background-color: #0E1117;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            box-sizing: border-box;
+        }
+    
+        #main-content {
+            min-height: calc(100vh - 40px); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        h1 {
+            font-size: 2.5em;
+            color: #ffa500;
+        }
+        
+        
+        p {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        
+        .button {
+            padding: 10px 30px;
+            background-color: #ffa500;
+            color: #121212;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .button:hover {
+            background-color: #ffd700;
+            transform: scale(1.05);
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: black }
+        }
+        
+        #changing-text {
+            border-right: 0.1em solid black;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #ffffff;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        
+        footer {
+            text-align: center;
+            font-size: 0.8em;
+            padding: 10px 20px; 
+            width: 100%;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div id="main-content">
+        <h1>Monitor Latest News About <span id="changing-text"></span></h1>
+
+        <p>Track Key Business Events Impacting Your Investments. Powered by AI</p>
+        <button class="button">Learn More</button>
+        
+    </div>    
+    
+    <script>
+        const phrases = ['layoffs', 'reorgs', 'M&A', 'disputes', 'product launches', 'ESG'];
+        let currentPhrase = 0;
+        let currentCharacter = 0;
+        let htmlElement = document.getElementById('changing-text');
+        let forward = true;
+        let intervalId = null;
+        let typingSpeed = 200;
+        let delayBeforeDelete = 1000;
+    
+        function typeWriter() {
+            if (forward) {
+                if (currentCharacter < phrases[currentPhrase].length) {
+                    currentCharacter++;
+                    htmlElement.textContent = phrases[currentPhrase].substr(0, currentCharacter);
+                } else {
+                    forward = false;
+                    clearInterval(intervalId);
+                    setTimeout(() => {
+                        intervalId = setInterval(typeWriter, typingSpeed);
+                    }, delayBeforeDelete); // Wait before starting to delete
+                }
+            } else {
+                if (currentCharacter > 0) {
+                    currentCharacter--;
+                    htmlElement.textContent = phrases[currentPhrase].substr(0, currentCharacter);
+                } else {
+                    forward = true;
+                    currentPhrase = (currentPhrase + 1) % phrases.length; // Move to the next phrase
+                }
+            }
+        }
+    
+        intervalId = setInterval(typeWriter, typingSpeed);
+    </script>
+    
+    
+</body>
+</html>
