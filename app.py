@@ -28,8 +28,6 @@ html(html_content, height=250)
 # create a session state for login
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
-if 'articles_df' not in st.session_state:
-    st.session_state['articles_df'] = None
 
 watchlist = []
 
@@ -49,42 +47,38 @@ with st.sidebar:
 
 if submit_button and username != "" and password != "":
 
-    with st.sidebar:
-        with st.spinner("logging you in..."):
-            user_row = functions.find_user(connection, username, password)
+    # with st.sidebar:
+    #     with st.spinner("logging you in..."):
+    #         user_row = functions.find_user(connection, username, password)
 
     if len(user_row) == 0:
         st.error('Invalid username or password')
         st.stop()
     else:
         # get company that a user added to their watchlist
-        watchlist = user_row[0].watchlist
+        # watchlist = user_row[0].watchlist
 
-        with st.sidebar:
-            st.write("You're logged in as: ", username)
+        # with st.sidebar:
+        #     st.write("You're logged in as: ", username)
 
-        st.session_state['logged_in'] = True
-
+        # st.session_state['logged_in'] = True
 
 # FOR DEV
-# st.session_state['logged_in'] = True
-# watchlist = 'Tesla'
+st.session_state['logged_in'] = True
+watchlist = 'Tesla'
 
 if st.session_state['logged_in']:
 
     # load articles associated with the company
-    articles = functions.get_data(connection, watchlist)
+    # articles = functions.get_data(connection, watchlist)
     # convert to df
-    articles_df = pd.DataFrame(articles)
-
-    st.session_state['articles_df'] = articles_df
+    # articles_df = pd.DataFrame(articles)
 
     # close connection
-    connection.close()
+    # connection.close()
 
-    # st.dataframe(articles_df)
     # rename columns to be: url, content, company_name, date, sentiment
-    articles_df.columns = ['url', 'content', 'company_name', 'date', 'sentiment']
+    # articles_df.columns = ['url', 'content', 'company_name', 'date', 'sentiment']
 
     # convert watchlist to list
     watchlist = watchlist.split(',')
@@ -95,22 +89,22 @@ if st.session_state['logged_in']:
     # sentiment analysis tab
     with tab1:
         # replace null with None
-        articles_df['sentiment'] = articles_df['sentiment'].apply(lambda x: x.replace('null', 'None'))
+        # articles_df['sentiment'] = articles_df['sentiment'].apply(lambda x: x.replace('null', 'None'))
 
-        # put sentiment column into a list
-        sentiment_data = articles_df['sentiment'].tolist()
+        # # put sentiment column into a list
+        # sentiment_data = articles_df['sentiment'].tolist()
 
-        # force convert to dict
-        clean_sentiment_list = [eval(x) for x in sentiment_data]
+        # # force convert to dict
+        # clean_sentiment_list = [eval(x) for x in sentiment_data]
 
-        agg_df = functions.aggregate_sentiment(clean_sentiment_list)
+        # agg_df = functions.aggregate_sentiment(clean_sentiment_list)
 
-        # keep only the date and Sentiment columns
-        date_df = functions.transform_sentiment(articles_df[['date', 'sentiment']])
+        # # keep only the date and Sentiment columns
+        # date_df = functions.transform_sentiment(articles_df[['date', 'sentiment']])
 
         # FOR DEV
-        # date_df = pd.read_csv('date_long_df.csv')
-        # agg_df = pd.read_csv('agg_result.csv')
+        date_df = pd.read_csv('sentiment_by_date.csv')
+        agg_df = pd.read_csv('sentiment_agg_result.csv')
 
         # columns to list
         columns = date_df.columns.tolist()
