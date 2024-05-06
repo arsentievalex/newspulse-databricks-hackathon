@@ -142,8 +142,6 @@ if st.session_state['logged_in']:
         # load stock price data
         price_series = functions.get_stock_history('TSLA')
 
-        date_df = pd.read_csv('date_long_df.csv')
-
         priceVolumeSeriesHistogram = functions.transform_date_sentiment(date_df)
 
         functions.plot_chart(price_series, priceVolumeSeriesHistogram)
