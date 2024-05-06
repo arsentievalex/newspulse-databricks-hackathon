@@ -71,14 +71,16 @@ if st.session_state['logged_in']:
 
     # load articles associated with the company
     # articles = functions.get_data(connection, watchlist)
+    
     # convert to df
     # articles_df = pd.DataFrame(articles)
+    articles_df = pd.read_csv('articles.csv')
 
     # close connection
     # connection.close()
 
     # rename columns to be: url, content, company_name, date, sentiment
-    # articles_df.columns = ['url', 'content', 'company_name', 'date', 'sentiment']
+    articles_df.columns = ['url', 'content', 'company_name', 'date', 'sentiment']
 
     # convert watchlist to list
     watchlist = watchlist.split(',')
@@ -89,22 +91,18 @@ if st.session_state['logged_in']:
     # sentiment analysis tab
     with tab1:
         # replace null with None
-        # articles_df['sentiment'] = articles_df['sentiment'].apply(lambda x: x.replace('null', 'None'))
+        articles_df['sentiment'] = articles_df['sentiment'].apply(lambda x: x.replace('null', 'None'))
 
-        # # put sentiment column into a list
-        # sentiment_data = articles_df['sentiment'].tolist()
+        # put sentiment column into a list
+        sentiment_data = articles_df['sentiment'].tolist()
 
-        # # force convert to dict
-        # clean_sentiment_list = [eval(x) for x in sentiment_data]
+        # force convert to dict
+        clean_sentiment_list = [eval(x) for x in sentiment_data]
 
-        # agg_df = functions.aggregate_sentiment(clean_sentiment_list)
+        agg_df = functions.aggregate_sentiment(clean_sentiment_list)
 
-        # # keep only the date and Sentiment columns
-        # date_df = functions.transform_sentiment(articles_df[['date', 'sentiment']])
-
-        # FOR DEV
-        date_df = pd.read_csv('sentiment_by_date.csv')
-        agg_df = pd.read_csv('sentiment_agg_result.csv')
+        # keep only the date and Sentiment columns
+        date_df = functions.transform_sentiment(articles_df[['date', 'sentiment']])
 
         # columns to list
         columns = date_df.columns.tolist()
