@@ -45,23 +45,23 @@ with st.sidebar:
         password = st.text_input(label='Password', type='password', placeholder='********')
         submit_button = st.form_submit_button(label='Log In')
 
-if submit_button and username != "" and password != "":
+# if submit_button and username != "" and password != "":
 
-    # with st.sidebar:
-    #     with st.spinner("logging you in..."):
-    #         user_row = functions.find_user(connection, username, password)
+#     with st.sidebar:
+#         with st.spinner("logging you in..."):
+#             user_row = functions.find_user(connection, username, password)
 
-    if len(user_row) == 0:
-        st.error('Invalid username or password')
-        st.stop()
-    else:
-        # get company that a user added to their watchlist
-        # watchlist = user_row[0].watchlist
+#     if len(user_row) == 0:
+#         st.error('Invalid username or password')
+#         st.stop()
+#     else:
+#         get company that a user added to their watchlist
+#         watchlist = user_row[0].watchlist
 
-        # with st.sidebar:
-        #     st.write("You're logged in as: ", username)
+#         with st.sidebar:
+#             st.write("You're logged in as: ", username)
 
-        # st.session_state['logged_in'] = True
+#         st.session_state['logged_in'] = True
 
 # FOR DEV
 st.session_state['logged_in'] = True
