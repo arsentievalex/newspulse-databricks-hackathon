@@ -70,6 +70,7 @@ def transform_date_sentiment(df):
 
 def get_ticker(company_name):
     search_result = search(company_name)
+    st.write(search_result)
     if 'quotes' in search_result and search_result['quotes']:
         return search_result['quotes'][0]['symbol']
     return None
