@@ -39,11 +39,11 @@ access_token = "YOUR_ACCESS TOKEN"
 # establish connection to databricks db
 # connection = functions.get_conn(server_hostname, http_path, access_token)
 
-with st.sidebar:
-    with st.form(key='login_form'):
-        username = st.text_input(label='Username')
-        password = st.text_input(label='Password', type='password', placeholder='********')
-        submit_button = st.form_submit_button(label='Log In')
+# with st.sidebar:
+#     with st.form(key='login_form'):
+#         username = st.text_input(label='Username')
+#         password = st.text_input(label='Password', type='password', placeholder='********')
+#         submit_button = st.form_submit_button(label='Log In')
 
 # if submit_button and username != "" and password != "":
 
