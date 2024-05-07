@@ -19,7 +19,7 @@ import requests
 
 
 # wide streamlit format
-#st.set_page_config(layout='wide')
+st.set_page_config(layout='wide')
 
 # read text from index.txt
 with open('index.html', 'r') as file:
@@ -41,11 +41,12 @@ access_token = "YOUR_ACCESS TOKEN"
 # establish connection to databricks db
 # connection = functions.get_conn(server_hostname, http_path, access_token)
 
-# with st.sidebar:
-#     with st.form(key='login_form'):
-#         username = st.text_input(label='Username')
-#         password = st.text_input(label='Password', type='password', placeholder='********')
-#         submit_button = st.form_submit_button(label='Log In')
+with st.sidebar:
+    with st.form(key='login_form'):
+        username = st.text_input(label='Username')
+        password = st.text_input(label='Password', type='password', placeholder='********')
+        submit_button = st.form_submit_button(label='Log In')
+st.info("Logging in has been disabled for demo purposes")
 
 # if submit_button and username != "" and password != "":
 
