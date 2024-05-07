@@ -27,10 +27,10 @@ with open('index.html', 'r') as file:
 html(html_content, height=250)
 
 # create a session state for login
-if 'logged_in' not in st.session_state:
-    st.session_state['logged_in'] = False
+# if 'logged_in' not in st.session_state:
+#     st.session_state['logged_in'] = False
 
-watchlist = []
+# watchlist = []
 
 server_hostname = "YOUR_SERVER_HOSTNAME"
 http_path = "YOUR HTTP_PATH"
@@ -143,6 +143,7 @@ if st.session_state['logged_in']:
                 "The stock price is plotted on the area chart.")
     
         # load stock price data
+        st.write(watchlist[0])
         tkr = functions.get_ticker(watchlist[0])
         price_series = functions.get_stock_history(tkr)
 
