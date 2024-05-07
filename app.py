@@ -13,6 +13,7 @@ from embedchain import App
 from embedchain.config import BaseLlmConfig
 import os
 import functions
+from yahooquery import search
 
 
 # wide streamlit format
