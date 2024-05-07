@@ -25,31 +25,7 @@ st.set_page_config(layout='wide')
 with open('index.html', 'r') as file:
     html_content = file.read()
 
-
 html(html_content, height=250)
-
-
-
-def get_ticker(company_name):
-    try:
-        search_result = search(company_name)
-        if 'quotes' in search_result and search_result['quotes']:
-            return search_result['quotes'][0]['symbol']
-        else:
-            return None
-    except requests.exceptions.JSONDecodeError:
-        st.write("fcking error again")
-        return "Invalid JSON response from server"
-    except requests.exceptions.RequestException as e:
-        return f"Request error: {e}"
-    except Exception as e:
-        return f"An error occurred: {e}"
-
-company_name = "Tesla"
-ticker_symbol = get_ticker(company_name)
-st.write(ticker_symbol)
-
-
 
 # create a session state for login
 # if 'logged_in' not in st.session_state:
@@ -168,11 +144,9 @@ if st.session_state['logged_in']:
                 "The stock price is plotted on the area chart.")
     
         # load stock price data
-        tkr = functions.get_ticker(watchlist[0])
-
-        st.write(tkr)
+        # tkr = functions.get_ticker(watchlist[0])
         
-        price_series = functions.get_stock_history('TSLA', '7d', '1d')
+        price_series = functions.get_stock_history('TSLA', '30d', '1d')
 
         priceVolumeSeriesHistogram = functions.transform_date_sentiment(date_df)
 
