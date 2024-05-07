@@ -28,6 +28,29 @@ with open('index.html', 'r') as file:
 
 html(html_content, height=250)
 
+
+
+def get_ticker(company_name):
+    try:
+        search_result = search(company_name)
+        if 'quotes' in search_result and search_result['quotes']:
+            return search_result['quotes'][0]['symbol']
+        else:
+            return None
+    except requests.exceptions.JSONDecodeError:
+        st.write(f"Raw response: {search_result.text}")
+        return "Invalid JSON response from server"
+    except requests.exceptions.RequestException as e:
+        return f"Request error: {e}"
+    except Exception as e:
+        return f"An error occurred: {e}"
+
+company_name = "Tesla"
+ticker_symbol = get_ticker(company_name)
+st.write(ticker_symbol)
+
+
+
 # create a session state for login
 # if 'logged_in' not in st.session_state:
 #     st.session_state['logged_in'] = False
@@ -68,7 +91,7 @@ access_token = "YOUR_ACCESS TOKEN"
 
 # FOR DEV
 st.session_state['logged_in'] = True
-watchlist = 'Tesla'
+watchlist = "Tesla"
 
 if st.session_state['logged_in']:
 
