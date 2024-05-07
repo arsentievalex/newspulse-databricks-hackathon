@@ -71,7 +71,7 @@ def transform_date_sentiment(df):
 def get_stock_history(tkr):
     ticker = Ticker(tkr)
 
-    df = ticker.history(period='60d', interval='1d')
+    df = ticker.history(period='7d', interval='1d')
 
     # reset index
     df.reset_index(inplace=True)
