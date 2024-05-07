@@ -76,10 +76,10 @@ def get_ticker(company_name):
 
 
 @st.cache_data(show_spinner=False)
-def get_stock_history(tkr):
+def get_stock_history(tkr, period, interval):
     ticker = Ticker(tkr)
 
-    df = ticker.history(period='7d', interval='1d')
+    df = ticker.history(period=period, interval=interval)
 
     # reset index
     df.reset_index(inplace=True)
