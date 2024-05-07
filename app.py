@@ -38,7 +38,7 @@ def get_ticker(company_name):
         else:
             return None
     except requests.exceptions.JSONDecodeError:
-        st.write(f"Raw response: {search_result}")
+        st.write("fcking error again")
         return "Invalid JSON response from server"
     except requests.exceptions.RequestException as e:
         return f"Request error: {e}"
