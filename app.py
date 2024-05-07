@@ -141,8 +141,9 @@ if st.session_state['logged_in']:
 
         st.info("The histogram shows the sentiment score of the articles published on a given date. The color represents negative or positive sentiment and the value is intensity (0-100)."
                 "The stock price is plotted on the area chart.")
-
+    
         # load stock price data
+        st.write(tkr)
         tkr = functions.get_ticker(watchlist)
         price_series = functions.get_stock_history(tkr)
 
