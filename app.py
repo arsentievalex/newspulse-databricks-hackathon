@@ -143,7 +143,8 @@ if st.session_state['logged_in']:
                 "The stock price is plotted on the area chart.")
 
         # load stock price data
-        price_series = functions.get_stock_history('TSLA')
+        tkr = functions.get_ticker(watchlist)
+        price_series = functions.get_stock_history(tkr)
 
         priceVolumeSeriesHistogram = functions.transform_date_sentiment(date_df)
 
