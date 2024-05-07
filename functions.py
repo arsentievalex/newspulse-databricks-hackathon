@@ -14,6 +14,7 @@ from embedchain.config import BaseLlmConfig
 import os
 from yahooquery import search
 import json
+import requests
 
 
 @st.cache_resource(show_spinner=False)
