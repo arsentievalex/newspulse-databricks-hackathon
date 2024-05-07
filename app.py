@@ -14,6 +14,7 @@ from embedchain.config import BaseLlmConfig
 import os
 import functions
 from yahooquery import search
+import json
 
 
 # wide streamlit format
