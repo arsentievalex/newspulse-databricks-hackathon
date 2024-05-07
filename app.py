@@ -145,7 +145,9 @@ if st.session_state['logged_in']:
     
         # load stock price data
         st.write(watchlist[0])
+        time.sleep(2)
         tkr = functions.get_ticker(watchlist[0])
+        time.sleep(2)
         price_series = functions.get_stock_history(tkr, '7d', '1d')
 
         priceVolumeSeriesHistogram = functions.transform_date_sentiment(date_df)
