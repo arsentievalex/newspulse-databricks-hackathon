@@ -19,7 +19,7 @@ import requests
 
 
 # wide streamlit format
-st.set_page_config(layout='wide')
+#st.set_page_config(layout='wide')
 
 # read text from index.txt
 with open('index.html', 'r') as file:
