@@ -68,7 +68,6 @@ def transform_date_sentiment(df):
     return overall_sentiment_data
 
 
-@st.cache_data(show_spinner=False)
 def get_ticker(company_name):
     search_result = search(company_name)
     if 'quotes' in search_result and search_result['quotes']:
