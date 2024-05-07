@@ -143,7 +143,7 @@ if st.session_state['logged_in']:
                 "The stock price is plotted on the area chart.")
     
         # load stock price data
-        st.write(tkr)
+        st.write(watchlist)
         tkr = functions.get_ticker(watchlist)
         price_series = functions.get_stock_history(tkr)
 
