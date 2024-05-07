@@ -15,6 +15,7 @@ import os
 import functions
 from yahooquery import search
 import json
+import requests
 
 
 # wide streamlit format
