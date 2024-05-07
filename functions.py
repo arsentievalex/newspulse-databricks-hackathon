@@ -13,6 +13,7 @@ from embedchain import App
 from embedchain.config import BaseLlmConfig
 import os
 from yahooquery import search
+import json
 
 
 @st.cache_resource(show_spinner=False)
