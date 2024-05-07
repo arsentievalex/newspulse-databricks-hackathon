@@ -12,6 +12,7 @@ import datetime
 from embedchain import App
 from embedchain.config import BaseLlmConfig
 import os
+from yahooquery import search
 
 
 @st.cache_resource(show_spinner=False)
@@ -65,6 +66,14 @@ def transform_date_sentiment(df):
     overall_sentiment_data.sort(key=lambda x: datetime.datetime.strptime(x["time"], '%Y-%m-%d'))
 
     return overall_sentiment_data
+
+
+@st.cache_data(show_spinner=False)
+def get_ticker(company_name):
+    search_result = search(company_name)
+    if 'quotes' in search_result and search_result['quotes']:
+        return search_result['quotes'][0]['symbol']
+    return None
 
 
 @st.cache_data(show_spinner=False)
