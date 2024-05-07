@@ -46,7 +46,7 @@ with st.sidebar:
         username = st.text_input(label='Username')
         password = st.text_input(label='Password', type='password', placeholder='********')
         submit_button = st.form_submit_button(label='Log In')
-st.info("Logging in has been disabled for demo purposes")
+    st.info("Logging in has been disabled for demo purposes")
 
 # if submit_button and username != "" and password != "":
 
