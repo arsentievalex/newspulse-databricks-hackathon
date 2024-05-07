@@ -70,16 +70,19 @@ def transform_date_sentiment(df):
 
 
 def get_ticker(company_name):
-    try:
-        search_result = search(company_name)
-        if 'quotes' in search_result and search_result['quotes']:
-            return search_result['quotes'][0]['symbol']
-        else:
-            return None
-    except json.JSONDecodeError:
-        st.error("Invalid JSON response from server")
-    except Exception as e:
-        return st.error(str(e))
+    search_result = search(company_name)
+    st.write(search_result.status_code)
+    if search_result.status_code == 200:
+        try:
+            if 'quotes' in search_result.json() and search_result.json()['quotes']:
+                return search_result.json()['quotes'][0]['symbol']
+            else:
+                return None
+        except json.JSONDecodeError:
+            st.error(f"Server responded with: {search_result.text}")
+            return "Invalid JSON response from server"
+    else:
+        return f"Server responded with status code {search_result.status_code}"
 
 
 @st.cache_data(show_spinner=False)
