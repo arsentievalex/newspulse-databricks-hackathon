@@ -22,8 +22,8 @@ Automated Databricks jobs are supposed to run daily or multiple times a day to c
 <img src="https://i.postimg.cc/hvqBYt93/newspulse.gif"/>
 
 ## Tech Stack
-- [Databricks]([https://www.snowflake.com/](https://www.databricks.com/)) - Data Processing, Storage, Vector Database
-- [Streamlit]([https://nextjs.org/](https://streamlit.io/)) - Frontend
+- [Databricks]([https://www.databricks.com/]) - Data Processing, Storage, Vector Database
+- [Streamlit]([(https://streamlit.io/)]) - Frontend
 - [OpenAI](https://www.openai.com/) - LLM
 - [DBRX](https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm) - LLM
 - [Langchain](https://js.langchain.com/docs/) - LLM wrapper
