@@ -2,21 +2,35 @@
 
 # NewsPulse AI: Databricks Generative AI Hackathon
 
-The app is designed to monitor the latest news articles and analyze sentiment around various business events, such as layoffs, M&As, reorgs, disputes, etc. Such events may have significant impact on stock performance, and therefore are crucial for the investors.
+## What It Does
+This application is specifically designed to monitor and analyze the sentiment of the latest news articles regarding significant business events, such as layoffs, mergers and acquisitions, reorganizations, and disputes. These events can profoundly affect stock performance, making it vital for investors to stay informed.
 
-The app has three main features: Sentiment Analysis (by day and topic & aggregated) Stock Price vs Sentiment (time series that allows to analyze impact of news sentiment on stock performance) Chatbot (Q&A with vector search index and sources)
+### Key Features
+- **Sentiment Analysis:** Analyze sentiment by day and topic, with aggregated results.
+- **Stock Price vs Sentiment:** A time series analysis to study the impact of news sentiment on stock performance.
+- **Chatbot:** Provides Q&A capabilities using a vector search index and sourced information.
 
-The process of acquiring the data is as follows:
+### Data Acquisition Process
+- **News Articles:** Uses the DuckDuckGo API to fetch recent news articles about selected companies.
+- **Content Scraping:** Utilizes ScrapeGraphAI and GPT 3.5-Turbo to extract content from URLs.
+- **Sentiment Extraction:** Applies DBRX Instruct and LangChain to determine sentiment from articles.
+- **RAG System:** Articles are chunked, embedded using DBRX, and loaded into a Databricks vector store.
+- **Stock Data:** Uses YahooQuery to gather historical stock price data from YahooFinance.
 
-* DuckDuckGo API is used to fetch the recent news articles about the selected company.
-* ScrapeGraphAI and GPT 3.5-Turbo is used to scrape article content from URLs.
-* DBRX Instruct and LangChain is used to extract sentiment from articles.
-* RAG: the articles are split into chunks, embedded & loaded to vector store.
-* YahooQuery is used to load stock price history data.
-
-The idea is that the Databricks jobs are scheduled to run every day or even multiple times per day to enrich the database and vector store with the newest articles.
+Automated Databricks jobs are supposed to run daily or multiple times a day to continuously update the database and vector store with new articles.
 
 <img src="https://i.postimg.cc/hvqBYt93/newspulse.gif"/>
+
+## Tech Stack
+- [Databricks]([https://www.snowflake.com/](https://www.databricks.com/)) - Data Processing, Storage, Vector Database
+- [Streamlit]([https://nextjs.org/](https://streamlit.io/)) - Frontend
+- [OpenAI](https://www.openai.com/) - LLM
+- [DBRX](https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm) - LLM
+- [Langchain](https://js.langchain.com/docs/) - LLM wrapper
+- [DuckDuckGo](https://rapidapi.com/epctex-epctex-default/api/duckduckgo10/) - News API
+- [ScrapeGraphAI](https://github.com/VinciGit00/Scrapegraph-ai/tree/main) - Web Scraping
+- [Yahooquery](https://yahooquery.dpguthrie.com/) - Yahoo Finance API
+- [Embedchain](https://embedchain.ai/) - RAG (used for demo as alternative to Databricks endpoint)
 
 
 <img src="https://i.postimg.cc/T1HZ62m6/newspulse-architecture.png"/>
