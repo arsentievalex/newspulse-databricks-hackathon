@@ -285,8 +285,8 @@ def transform_sentiment(df: pd.DataFrame):
     # Apply custom sorting
     wide_df = wide_df.sort_values('Sentiment Topic', key=lambda x: x.map(custom_sort_key))
 
-    # reverse the order of columns
-    wide_df = wide_df[wide_df.columns[:1].tolist() + wide_df.columns[1:].tolist()[::-1]]
+    # sort columns by date except first column
+    wide_df = wide_df[wide_df.columns[:1].tolist() + wide_df.columns[1:].sort_values().tolist()]
 
     # clean values in Sentiment Topic column
     wide_df["Sentiment Topic"] = wide_df["Sentiment Topic"].str.replace("_", " ").str.capitalize()
