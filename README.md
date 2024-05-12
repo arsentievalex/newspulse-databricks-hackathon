@@ -33,4 +33,4 @@ Automated Databricks jobs are supposed to run daily or multiple times a day to c
 - [Embedchain](https://embedchain.ai/) - RAG (used for demo as alternative to Databricks endpoint)
 
 
-<img src="https://i.postimg.cc/T1HZ62m6/newspulse-architecture.png"/>
+<img src="https://i.postimg.cc/BnKW2WsN/newspulse-architecture.png"/>
