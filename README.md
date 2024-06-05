@@ -1,6 +1,6 @@
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://newspulseai.streamlit.app/)
 
-# NewsPulse AI: Databricks Generative AI Hackathon
+# NewsPulse AI: Databricks Generative AI Hackathon [1st place winner in Financial Services]
 
 ## What It Does
 This application is specifically designed to monitor and analyze the sentiment of the latest news articles regarding significant business events, such as layoffs, mergers and acquisitions, reorganizations, and disputes. These events can profoundly affect stock performance, making it vital for investors to stay informed.
