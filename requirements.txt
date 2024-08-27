@@ -1,6 +1,6 @@
 streamlit
 openai
-embedchain
+embedchain==0.1.103
 pysqlite3-binary
 yahooquery
 streamlit_lightweight_charts
