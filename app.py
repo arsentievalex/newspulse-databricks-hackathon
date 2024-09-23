@@ -154,57 +154,57 @@ if st.session_state['logged_in']:
         functions.plot_chart(price_series, priceVolumeSeriesHistogram)
 
     # chatbot tab. For demo purposes will use embedchain and a few sample news articles.
-    with tab3:
-        st.info("The chatbot is trained only on selected articles for demo purposes")
+    # with tab3:
+    #     st.info("The chatbot is trained only on selected articles for demo purposes")
 
-        urls = ["https://www.msn.com/en-us/autos/news/tesla-s-supercharger-layoffs-couldn-t-have-come-at-a-worse-time/ar-AA1o6uYb",
-                "https://www.msn.com/en-us/money/news/i-landed-a-dream-internship-at-tesla-now-im-scrambling-after-the-company-cancelled-my-internship-3-weeks-before-i-was-set-to-start/ar-AA1o3OFp",
-                "https://www.wired.com/story/tesla-supercharger-pullback-filling-the-power-gap/",
-                "https://www.ft.com/content/114effb2-1071-4d93-b53d-00a96a0336a2",
-                "https://www.msn.com/en-us/money/companies/elimination-of-teslas-charging-department-raises-worries-as-evs-from-other-automakers-join-network/ar-AA1nZzGg",
-                "https://www.msn.com/en-us/money/companies/tesla-lays-off-hundreds-of-employees-on-electric-vehicle-charger-team/ar-AA1nZsPe",
-                "https://time.com/6973091/tesla-fires-bulk-of-supercharger-team-in-blow-to-other-automakers/",
-                "https://www.msn.com/en-us/autos/news/tesla-staff-say-entire-supercharger-team-fired/ar-AA1nYAl8",
-                "https://www.msn.com/en-us/money/other/tesla-retreat-from-ev-charging-leaves-growth-of-u-s-network-in-doubt/ar-AA1o64CD",
-                "https://arstechnica.com/cars/2024/05/chaos-at-tesla-what-analysts-think-about-elon-musks-cuts-and-layoffs/"
-                ]
+    #     urls = ["https://www.msn.com/en-us/autos/news/tesla-s-supercharger-layoffs-couldn-t-have-come-at-a-worse-time/ar-AA1o6uYb",
+    #             "https://www.msn.com/en-us/money/news/i-landed-a-dream-internship-at-tesla-now-im-scrambling-after-the-company-cancelled-my-internship-3-weeks-before-i-was-set-to-start/ar-AA1o3OFp",
+    #             "https://www.wired.com/story/tesla-supercharger-pullback-filling-the-power-gap/",
+    #             "https://www.ft.com/content/114effb2-1071-4d93-b53d-00a96a0336a2",
+    #             "https://www.msn.com/en-us/money/companies/elimination-of-teslas-charging-department-raises-worries-as-evs-from-other-automakers-join-network/ar-AA1nZzGg",
+    #             "https://www.msn.com/en-us/money/companies/tesla-lays-off-hundreds-of-employees-on-electric-vehicle-charger-team/ar-AA1nZsPe",
+    #             "https://time.com/6973091/tesla-fires-bulk-of-supercharger-team-in-blow-to-other-automakers/",
+    #             "https://www.msn.com/en-us/autos/news/tesla-staff-say-entire-supercharger-team-fired/ar-AA1nYAl8",
+    #             "https://www.msn.com/en-us/money/other/tesla-retreat-from-ev-charging-leaves-growth-of-u-s-network-in-doubt/ar-AA1o64CD",
+    #             "https://arstechnica.com/cars/2024/05/chaos-at-tesla-what-analysts-think-about-elon-musks-cuts-and-layoffs/"
+    #             ]
 
-        # set openai api key
-        os.environ["OPENAI_API_KEY"] = st.secrets["openai_credentials"]["API_KEY"]
+    #     # set openai api key
+    #     os.environ["OPENAI_API_KEY"] = st.secrets["openai_credentials"]["API_KEY"]
 
-        bot = functions.load_bot(urls)
-        query_config = BaseLlmConfig(number_documents=1)
+    #     bot = functions.load_bot(urls)
+    #     query_config = BaseLlmConfig(number_documents=1)
 
-        if "messages" not in st.session_state.keys():  # Initialize the chat messages history
-            st.session_state.messages = [
-                {"role": "assistant", "content": "Ask me a question!"}]
+    #     if "messages" not in st.session_state.keys():  # Initialize the chat messages history
+    #         st.session_state.messages = [
+    #             {"role": "assistant", "content": "Ask me a question!"}]
 
-        if prompt := st.chat_input("Your question"):  # Prompt for user input and save to chat history
-            st.session_state.messages.append({"role": "user", "content": prompt})
+    #     if prompt := st.chat_input("Your question"):  # Prompt for user input and save to chat history
+    #         st.session_state.messages.append({"role": "user", "content": prompt})
 
-        for message in st.session_state.messages:  # Display the prior chat messages
-            # if role is user
-            if message["role"] == "user":
-                with st.chat_message(message["role"]):
-                    st.write(message["content"])
-            elif message["role"] == "assistant":
-                with st.chat_message(message["role"]):
-                    st.write(message["content"])
+    #     for message in st.session_state.messages:  # Display the prior chat messages
+    #         # if role is user
+    #         if message["role"] == "user":
+    #             with st.chat_message(message["role"]):
+    #                 st.write(message["content"])
+    #         elif message["role"] == "assistant":
+    #             with st.chat_message(message["role"]):
+    #                 st.write(message["content"])
 
-        # If last message is not from assistant, generate a new response
-        if st.session_state.messages[-1]["role"] != "assistant":
-            with st.chat_message("assistant"):
-                with st.spinner("Thinking..."):
-                    response, citations = bot.chat(prompt, citations=True, config=query_config)
+    #     # If last message is not from assistant, generate a new response
+    #     if st.session_state.messages[-1]["role"] != "assistant":
+    #         with st.chat_message("assistant"):
+    #             with st.spinner("Thinking..."):
+    #                 response, citations = bot.chat(prompt, citations=True, config=query_config)
 
-                    sources = functions.get_sources(citations)
-                    # italicized_sources = [f"*{source}*" for source in sources]
+    #                 sources = functions.get_sources(citations)
+    #                 # italicized_sources = [f"*{source}*" for source in sources]
 
-                    full_response = response + "\n\n**Source**:\n" + f"*{sources[0]}*"
+    #                 full_response = response + "\n\n**Source**:\n" + f"*{sources[0]}*"
 
-                    st.write(full_response)
+    #                 st.write(full_response)
 
-                    message = {"role": "assistant", "content": full_response}
-                    st.session_state.messages.append(message)  # Add response to message history
+    #                 message = {"role": "assistant", "content": full_response}
+    #                 st.session_state.messages.append(message)  # Add response to message history
 
 
