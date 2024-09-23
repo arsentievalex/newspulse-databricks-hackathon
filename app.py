@@ -163,7 +163,6 @@ if st.session_state['logged_in']:
                 "https://www.ft.com/content/114effb2-1071-4d93-b53d-00a96a0336a2",
                 "https://www.msn.com/en-us/money/companies/elimination-of-teslas-charging-department-raises-worries-as-evs-from-other-automakers-join-network/ar-AA1nZzGg",
                 "https://www.msn.com/en-us/money/companies/tesla-lays-off-hundreds-of-employees-on-electric-vehicle-charger-team/ar-AA1nZsPe",
-                "https://time.com/6973091/tesla-fires-bulk-of-supercharger-team-in-blow-to-other-automakers/",
                 "https://www.msn.com/en-us/autos/news/tesla-staff-say-entire-supercharger-team-fired/ar-AA1nYAl8",
                 "https://www.msn.com/en-us/money/other/tesla-retreat-from-ev-charging-leaves-growth-of-u-s-network-in-doubt/ar-AA1o64CD",
                 "https://arstechnica.com/cars/2024/05/chaos-at-tesla-what-analysts-think-about-elon-musks-cuts-and-layoffs/"
